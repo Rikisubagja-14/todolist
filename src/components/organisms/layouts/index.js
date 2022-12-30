@@ -56,7 +56,6 @@ const Layout = () => {
     <>
       <div className="text-center border-gray-200 px-2 sm:px-4 py-2.5 mr-11 ml-11 pb-3 rounded-t-lg bg-orange-200">
         <div className="p-10 container my-12 mx-auto px-4 md:px-12">
-        
           <Button
             ClassName={`h-32 w-full italic text-sm md:text-5xl font-serif text-white bg-gradient-to-br from-gray-900 to-blue-900 hover:bg-gradient-to-bl  focus:ring-blue-300 dark:focus:ring-gray-800 font-medium rounded-lg px-5 py-2.5 text-center mr-2 mb-2`}
             onClick={() => setIsOpen(true)}

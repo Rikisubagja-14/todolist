@@ -6,17 +6,26 @@ import IconDone from "../../../assets/Icons/IconDone";
 import PopupModal from "../PopupModal";
 import PopupModalEdit from "../PopupModalEdit";
 
-const Card = ({ title, desc, index, HandleOnClick, OnClickEdit, TaskObj, onClickComplate, Style}) => {
-    const [isOpen, setIsOpen] = useState(false);
+const Card = ({
+  title,
+  desc,
+  index,
+  HandleOnClick,
+  OnClickEdit,
+  TaskObj,
+  onClickComplate,
+  Style,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
   const HandleDelete = () => {
     HandleOnClick(index);
-  }
+  };
 
   const HandleUpdatelist = (object) => {
-    OnClickEdit(object,index);
-  }
+    OnClickEdit(object, index);
+  };
 
-  const [isComplate,SetComplate] = useState(false);
+  const [isComplate, SetComplate] = useState(false);
 
   return (
     <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4 cursor-pointer">
@@ -24,10 +33,22 @@ const Card = ({ title, desc, index, HandleOnClick, OnClickEdit, TaskObj, onClick
         href="/"
         className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-700"
       >
-        <h5 className={isComplate ? "mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white italic font-serif line-through" : "mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white italic font-serif "}>
+        <h5
+          className={
+            isComplate
+              ? "mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white italic font-serif line-through"
+              : "mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white italic font-serif "
+          }
+        >
           {title}
         </h5>
-        <p className={isComplate ? "font-normal text-gray-700 dark:text-gray-400 italic font-serif line-through" : "font-normal text-gray-700 dark:text-gray-400 italic font-serif"}>
+        <p
+          className={
+            isComplate
+              ? "font-normal text-gray-700 dark:text-gray-400 italic font-serif line-through"
+              : "font-normal text-gray-700 dark:text-gray-400 italic font-serif"
+          }
+        >
           {desc}
         </p>
         <div className="pt-5 flex justify-between">
@@ -38,18 +59,23 @@ const Card = ({ title, desc, index, HandleOnClick, OnClickEdit, TaskObj, onClick
           />
           <ButtonIcon
             ClassName={`"text-blue-700 border border-y-lime-700 hover:bg-lime-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-lime-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-lime-500 dark:text-lime-500 dark:hover:text-white dark:focus:ring-lime-800`}
-            Icons={<IconsEdit ClassName={`w-6 h-6`}  />}
-            OnClick= {()=> setIsOpen(true)}
-
+            Icons={<IconsEdit ClassName={`w-6 h-6`} />}
+            OnClick={() => setIsOpen(true)}
           />
           <ButtonIcon
             ClassName={`"text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800`}
             Icons={<IconDone ClassName={`w-6 h-6`} />}
-            OnClick={()=>SetComplate(true)}
+            OnClick={() => SetComplate(true)}
           />
         </div>
       </div>
-      {isOpen && <PopupModalEdit onClickClose={() => setIsOpen(false)} OnClickUpdate={HandleUpdatelist} TaskObj={TaskObj} />}
+      {isOpen && (
+        <PopupModalEdit
+          onClickClose={() => setIsOpen(false)}
+          OnClickUpdate={HandleUpdatelist}
+          TaskObj={TaskObj}
+        />
+      )}
     </div>
   );
 };

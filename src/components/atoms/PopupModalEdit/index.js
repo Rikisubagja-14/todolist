@@ -1,34 +1,32 @@
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
 
-const PopupModalEdit = ({onClickClose, OnClickUpdate, TaskObj}) => {
-
-  const [title,setTitle] = useState('');
-  const [description,setDescription] = useState('');
+const PopupModalEdit = ({ onClickClose, OnClickUpdate, TaskObj }) => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   const HandleOnChange = (e) => {
-    const {name,value} = e.target
+    const { name, value } = e.target;
 
-    if(name === "title"){
-      setTitle(value)
-    }else{
+    if (name === "title") {
+      setTitle(value);
+    } else {
       setDescription(value);
     }
+  };
 
-  }
-
-  useEffect(()=>{
+  useEffect(() => {
     setTitle(TaskObj.title);
     setDescription(TaskObj.description);
-  },[])
+  }, []);
 
   const HandleUpdate = () => {
-    let taskObj = {}
+    let taskObj = {};
     taskObj["title"] = title;
     taskObj["description"] = description;
     OnClickUpdate(taskObj);
-  }
-  
+  };
+
   return (
     <div className="fixed z-10 overflow-y-auto top-0 w-full left-0 ">
       <div className="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -57,7 +55,6 @@ const PopupModalEdit = ({onClickClose, OnClickUpdate, TaskObj}) => {
                   value={title}
                   onChange={HandleOnChange}
                   name="title"
-                  
                 />
                 <label className="text-white italic font-serif">
                   Description

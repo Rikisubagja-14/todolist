@@ -1,6 +1,6 @@
 import React from "react";
 
-const Search = ({OnChange, Value}) => {
+const Search = ({ OnChange, Value }) => {
   return (
     <>
       <label
@@ -33,7 +33,6 @@ const Search = ({OnChange, Value}) => {
           placeholder="Search Title Todo List.."
           onChange={OnChange}
           value={Value}
-         
         />
       </div>
     </>
