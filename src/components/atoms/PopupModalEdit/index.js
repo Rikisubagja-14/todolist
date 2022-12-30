@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../Button";
 
-const PopupModal = ({ onClickClose, onClickCreate }) => {
+const PopupModalEdit = ({onClickClose, OnClickUpdate, TaskObj}) => {
 
   const [title,setTitle] = useState('');
   const [description,setDescription] = useState('');
@@ -17,11 +17,16 @@ const PopupModal = ({ onClickClose, onClickCreate }) => {
 
   }
 
-  const HandleSave = () => {
+  useEffect(()=>{
+    setTitle(TaskObj.title);
+    setDescription(TaskObj.description);
+  },[])
+
+  const HandleUpdate = () => {
     let taskObj = {}
     taskObj["title"] = title;
     taskObj["description"] = description;
-    onClickCreate(taskObj);
+    OnClickUpdate(taskObj);
   }
   
   return (
@@ -42,7 +47,7 @@ const PopupModal = ({ onClickClose, onClickCreate }) => {
           <form>
             <div>
               <h1 className="text-2xl text-center italic font-serif">
-                CREATE TODO LIST
+                UPDATE TODO LIST
               </h1>
               <div className="dark:bg-gray-900 px-4 pt-5 h-auto pb-4 sm:p-6 sm:pb-4">
                 <label className="text-white italic font-serif">Title</label>
@@ -52,6 +57,7 @@ const PopupModal = ({ onClickClose, onClickCreate }) => {
                   value={title}
                   onChange={HandleOnChange}
                   name="title"
+                  
                 />
                 <label className="text-white italic font-serif">
                   Description
@@ -74,8 +80,8 @@ const PopupModal = ({ onClickClose, onClickCreate }) => {
                 />
                 <Button
                   ClassName={`py-2 px-4 italic font-serif text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl  focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm text-center`}
-                  title={`CREATE`}
-                  onClick={HandleSave}
+                  title={`UPDATE`}
+                  onClick={HandleUpdate}
                 />
               </div>
               <div className="text-2xl text-center">
@@ -89,4 +95,4 @@ const PopupModal = ({ onClickClose, onClickCreate }) => {
   );
 };
 
-export default PopupModal;
+export default PopupModalEdit;

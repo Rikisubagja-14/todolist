@@ -1,6 +1,6 @@
 import React from "react";
 
-const Search = () => {
+const Search = ({OnChange, Value}) => {
   return (
     <>
       <label
@@ -31,6 +31,8 @@ const Search = () => {
           type="search"
           className="italic font-serif block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-900 dark:border-gray-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Search Title Todo List.."
+          onChange={OnChange}
+          value={Value}
          
         />
       </div>

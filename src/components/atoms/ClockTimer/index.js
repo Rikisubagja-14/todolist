@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from "react";
 
-function ClockTimer() {
-  const [date, setDate] = useState(new Date());
+const ClockTimer = () => {
+
+  const [date, setDate] = useState();
   function refreshClock() {
     setDate(new Date());
   }
-  useEffect(() => {
+
+
+  const DateTimes = () => {
     const timerId = setInterval(refreshClock, 1000);
     return function cleanup() {
-      clearInterval(timerId);
+    clearInterval(timerId);
     };
+  }
+  useEffect(() => {
+    DateTimes(new Date());
   },[]);
-  
+
 
   return(
     <>
-     <span className="text-4xl dark:text-gray-900 italic font-bold md:text-6xl">{ date.toLocaleTimeString(`en-US`)}</span>
+     <span className="text-4xl dark:text-gray-500 italic font-bold md:text-3xl">{date?.toLocaleTimeString(`en-US`)}</span>
     </>
    
   )
